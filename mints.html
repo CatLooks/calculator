@@ -1,0 +1,67 @@
+<!doctype html><html><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ToonTown Mints</title>
+	<link rel="icon" href="icon.ico">
+	<style type="text/css">
+		@font-face {
+			font-family: 'Font';
+			src: url(font.ttf);
+		}
+
+		body {
+			font-family: 'Font';
+			font-size: 24px;
+			overflow: hidden;
+		}
+
+		#auth {
+			position: absolute;
+			left: 32px;
+			top: 24px;
+			font-size: 16px;
+		}
+
+		.btn {
+			background: linear-gradient(to right, #11EDB2, #08BF8E);
+			border: #101114 solid 5px;
+			border-radius: 10px 5px;
+			font-family: 'Font';
+			font-size: 24px;
+			padding: 10px;
+		}
+
+		input {
+			border-radius: #101114 solid 5px;
+			border-radius: 10px 5px;
+			font-family: 'Font';
+			font-size: 24px;
+			padding: 10px;
+		}
+	</style>
+</head><body><center>
+	<div id="auth">
+		<p>Website made by <a target="_blank" href="https://github.com/CatLooks">CatLooks</a></p>
+		<p>Mint Maps by Mr Red Bull</p>
+	</div>
+	<h3>Mint Explorer</h3>
+	<button class="btn" onclick="reload('c');">Coin</button>
+	<button class="btn" onclick="reload('d');">Dollar</button>
+	<button class="btn" onclick="reload('b');">Bullion</button>
+	<p>Level: <input type="number" id="mint-floor" min="1" max="20" value="1" onchange="reload();" oninput="reload();"></p>
+	<img id="mint-img" src="" alt="Failed to load mint map. Sorry :("/>
+	<script type="text/javascript">
+		var dirs = {
+			c: 'cbhq_coin',
+			d: 'cbhq_dollar',
+			b: 'cbhq_bull'
+		};
+		var reload = function(new_type = null) {
+			if (new_type !== null) { type = new_type; };
+			var floor = parseInt(document.getElementById('mint-floor').value);
+			if (floor < 1 || floor > 20) { return; };
+			document.getElementById('mint-img').src = `${dirs[type]}/${floor}.webp`;
+		};
+		reload('c');
+	</script>
+</center></body></html>
