@@ -440,6 +440,7 @@ var Cog = function(lvl, v2) {
 	this.dropMissed = 0;
 	this.comboBonus = 0;
 	this.lureBonus = 0;
+	this.lureGag = 0;
 };
 
 // copy cog
@@ -477,6 +478,13 @@ Cog.prototype.resist = function(dmg) {
 
 // damage cog
 Cog.prototype.hit = function(gag) {
+	if ((gag.t == 4 || gag.t == 5) && this.lureGag) {
+		if (this.lureGag != gag.t) {
+			this.hp -= this.resist(this.lureBonus);
+			this.lureGag = 0;
+			this.tracks[2] = 0;
+		};
+	};
 	switch (gag.t) {
 		case 0: break;
 		case 1: {
@@ -505,10 +513,8 @@ Cog.prototype.hit = function(gag) {
 		case 5: {
 			var dmg = gag.info().arg;
 			if (this.tracks[2]) {
-				var bon = lureBonus(dmg);
-				dmg += bon;
-				this.lureBonus += bon;
-				this.tracks[2] = 0;
+				this.lureBonus += lureBonus(dmg);
+				this.lureGag = gag.t;
 			};
 			dmg = this.resist(dmg);
 			this.hp -= dmg;
