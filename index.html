@@ -1,0 +1,562 @@
+<!doctype html><html><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>TTRC - ToonTown Calculator ⚙️</title>
+	<link rel="icon" href="icon.ico">
+	<link rel="stylesheet" href="format.css" type="text/css">
+	<script type="text/javascript" src="script.js"></script>
+</head><body oncontextmenu="return false;" class="not-selectable">
+	<!-- equations -->
+	<div style="display: flex;">
+		<img id="sel-1" src="battle/active.png" onclick="selectTrack(1);" style="width: 64px; height: 64px;"/>
+		<img src="battle/remove.png" onclick="gagRemove(1);" style="width: 64px; height: 64px;"/>
+		<div class="equ">
+			<div style="display: flex; align-items: center; justify-content: center; text-align: center;">
+				<img class="gag" src="battle/cog.png"/>
+				<b style="margin: 5px" onclick="toggleCog(1);" onmousewheel="cogLVL(1, event);">
+					<span id="cog-1-ver">1.0</span><br><span id="cog-1-lvl">LVL 1</span>
+				</b>
+			</div>
+			<div id="equ-1" style="display: flex;"></div>
+		</div>
+		<div class="res">
+			<div style="display: flex; align-items: center; justify-content: center; text-align: center;">
+				<img class="gag" src="battle/cog.png"/>
+				<b style="margin: 5px">
+					<span id="cog-1-ver-res">1.0</span><br><span id="cog-1-lvl-res">6 HP</span>
+				</b>
+				<div id="gbonus-div-1" style="display: none;">
+					<img style="height: 32px;" src="battle/glove.png"/><br/>
+					<b style="margin: 5px" id="gbonus-1">0 HP</b>
+				</div><div id="mbonus-div-1" style="display: none;">
+					<img style="height: 32px;" src="battle/magnet.png"/><br/>
+					<b style="margin: 5px" id="mbonus-1">0 HP</b>
+				</div><div id="pbonus-div-1" style="display: none;">
+					<img style="height: 32px;" src="battle/plating.png"/><br/>
+					<b style="margin: 5px" id="pbonus-1">0 HP</b>
+				</div><div id="dbonus-div-1" style="display: none;">
+					<img style="height: 32px;" src="battle/miss.png"/><br/>
+					<b style="margin: 5px" class="acc-low" id="dbonus-1">0 HP</b>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="display: flex;">
+		<img id="sel-2" src="battle/passive.png" onclick="selectTrack(2);" style="width: 64px; height: 64px;"/>
+		<img src="battle/remove.png" onclick="gagRemove(2);" style="width: 64px; height: 64px;"/>
+		<div class="equ">
+			<div style="display: flex; align-items: center; justify-content: center; text-align: center;">
+				<img class="gag" src="battle/cog.png"/>
+				<b style="margin: 5px" onclick="toggleCog(2);" onmousewheel="cogLVL(2, event);">
+					<span id="cog-2-ver">1.0</span><br><span id="cog-2-lvl">LVL 1</span>
+				</b>
+			</div>
+			<div id="equ-2" style="display: flex;"></div>
+		</div>
+		<div class="res">
+			<div style="display: flex; align-items: center; justify-content: center; text-align: center;">
+				<img class="gag" src="battle/cog.png"/>
+				<b style="margin: 5px">
+					<span id="cog-2-ver-res">1.0</span><br><span id="cog-2-lvl-res">6 HP</span>
+				</b>
+				<div id="gbonus-div-2" style="display: none;">
+					<img style="height: 32px;" src="battle/glove.png"/><br/>
+					<b style="margin: 5px" id="gbonus-2">0 HP</b>
+				</div><div id="mbonus-div-2" style="display: none;">
+					<img style="height: 32px;" src="battle/magnet.png"/><br/>
+					<b style="margin: 5px" id="mbonus-2">0 HP</b>
+				</div><div id="pbonus-div-2" style="display: none;">
+					<img style="height: 32px;" src="battle/plating.png"/><br/>
+					<b style="margin: 5px" id="pbonus-2">0 HP</b>
+				</div><div id="dbonus-div-2" style="display: none;">
+					<img style="height: 32px;" src="battle/miss.png"/><br/>
+					<b style="margin: 5px" class="acc-low" id="dbonus-2">0 HP</b>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="display: flex;">
+		<img id="sel-3" src="battle/passive.png" onclick="selectTrack(3);" style="width: 64px; height: 64px;"/>
+		<img src="battle/remove.png" onclick="gagRemove(3);" style="width: 64px; height: 64px;"/>
+		<div class="equ">
+			<div style="display: flex; align-items: center; justify-content: center; text-align: center;">
+				<img class="gag" src="battle/cog.png"/>
+				<b style="margin: 5px" onclick="toggleCog(3);" onmousewheel="cogLVL(3, event);">
+					<span id="cog-3-ver">1.0</span><br><span id="cog-3-lvl">LVL 1</span>
+				</b>
+			</div>
+			<div id="equ-3" style="display: flex;"></div>
+		</div>
+		<div class="res">
+			<div style="display: flex; align-items: center; justify-content: center; text-align: center;">
+				<img class="gag" src="battle/cog.png"/>
+				<b style="margin: 5px">
+					<span id="cog-3-ver-res">1.0</span><br><span id="cog-3-lvl-res">6 HP</span>
+				</b>
+				<div id="gbonus-div-3" style="display: none;">
+					<img style="height: 32px;" src="battle/glove.png"/><br/>
+					<b style="margin: 5px" id="gbonus-3">0 HP</b>
+				</div><div id="mbonus-div-3" style="display: none;">
+					<img style="height: 32px;" src="battle/magnet.png"/><br/>
+					<b style="margin: 5px" id="mbonus-3">0 HP</b>
+				</div><div id="pbonus-div-3" style="display: none;">
+					<img style="height: 32px;" src="battle/plating.png"/><br/>
+					<b style="margin: 5px" id="pbonus-3">0 HP</b>
+				</div><div id="dbonus-div-3" style="display: none;">
+					<img style="height: 32px;" src="battle/miss.png"/><br/>
+					<b style="margin: 5px" class="acc-low" id="dbonus-3">0 HP</b>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="display: flex;">
+		<img id="sel-4" src="battle/passive.png" onclick="selectTrack(4);" style="width: 64px; height: 64px;"/>
+		<img src="battle/remove.png" onclick="gagRemove(4);" style="width: 64px; height: 64px;"/>
+		<div class="equ">
+			<div style="display: flex; align-items: center; justify-content: center; text-align: center;">
+				<img class="gag" src="battle/cog.png"/>
+				<b style="margin: 5px" onclick="toggleCog(4);" onmousewheel="cogLVL(4, event);">
+					<span id="cog-4-ver">1.0</span><br><span id="cog-4-lvl">LVL 1</span>
+				</b>
+			</div>
+			<div id="equ-4" style="display: flex;"></div>
+		</div>
+		<div class="res">
+			<div style="display: flex; align-items: center; justify-content: center; text-align: center;">
+				<img class="gag" src="battle/cog.png"/>
+				<b style="margin: 5px">
+					<span id="cog-4-ver-res">1.0</span><br><span id="cog-4-lvl-res">6 HP</span>
+				</b>
+				<div id="gbonus-div-4" style="display: none;">
+					<img style="height: 32px;" src="battle/glove.png"/><br/>
+					<b style="margin: 5px" id="gbonus-4">0 HP</b>
+				</div><div id="mbonus-div-4" style="display: none;">
+					<img style="height: 32px;" src="battle/magnet.png"/><br/>
+					<b style="margin: 5px" id="mbonus-4">0 HP</b>
+				</div><div id="pbonus-div-4" style="display: none;">
+					<img style="height: 32px;" src="battle/plating.png"/><br/>
+					<b style="margin: 5px" id="pbonus-4">0 HP</b>
+				</div><div id="dbonus-div-4" style="display: none;">
+					<img style="height: 32px;" src="battle/miss.png"/><br/>
+					<b style="margin: 5px" class="acc-low" id="dbonus-4">0 HP</b>
+				</div>
+			</div>
+		</div>
+	</div><hr/>
+	<div style="display: flex; align-items: center; font-size: 24px">
+		Remove all gags: <img src="battle/remove.png" onclick="totalClean();"/>
+		<span style="margin-left: 20px">Manual Cog Level:</span>
+		<img src="battle/arrowup.png" onclick="cogLVL(selected + 1, { deltaY: -100, preventDefault: () => 0 });"/>
+		<img src="battle/arrowdown.png" onclick="cogLVL(selected + 1, { deltaY: 100, preventDefault: () => 0 });"/>
+	</div>
+
+	<!-- gag selector -->
+	<hr/><div style="display: flex">
+		<table id="gag-table"></table>
+		<img src="battle/leaf.png" id="org-toggle" onclick="toggleOrg();"/>
+		<div id="gag-info">
+			<center><div class="gag" id="gag-preview"><img src="battle/leaf.png" class="leaf" style="display: none;"/></div></center>
+			<p><b id="gag-info-name" style="color: #E3053C;">None</b></p>
+			<p>Target: <b id="gag-info-target">None</b></p>
+			<p>Accuracy: <b id="gag-info-acc">0%</b> (<b id="gag-info-acc-text">?</b>)</p>
+			<p><span id="gag-info-unit">Damage</span>: <b id="gag-info-dmg">0</b></p>
+		</div>
+		<div id="gen-form">
+			<center>
+				<h3>Generator Settings</h3>
+				<p>Toon Count: <span id="gen-toon-count">1</span></p>
+				<img src="battle/arrowup.png" onclick="genSettings(0);"/>
+				<img src="battle/arrowdown.png" onclick="genSettings(1);"/>
+				<p>Minimal Gag Level: <span id="gen-min-lvl">1</span></p>
+				<img src="battle/arrowup.png" onclick="genSettings(2);"/>
+				<img src="battle/arrowdown.png" onclick="genSettings(3);"/>
+			</center>
+		</div>
+	</div>
+
+	<!-- footer -->
+	<footer style="display: flex; margin-top: 20px; font-size: 24px;">
+		<span style="margin-left: 100px">Website made by <a target="_blank" href="https://github.com/CatLooks">CatLooks</a></span>
+		<span style="margin-right: 100px; margin-left: auto;">Textures from <a target="_blank" href="https://www.toontownrewritten.com/">ToonTown Rewritten</a></span>
+	</footer>
+
+	<!-- page scripts -->
+	<script type="text/javascript">
+
+		// variables
+		var organicFlag = false;
+		var selected = 0;
+		var toonCount = 1;
+		var minGagLVL = 1;
+
+		// equation tracks
+		var tracks = [
+			{ lvl: 1, ver: '1.0', gags: [] }, 
+			{ lvl: 1, ver: '1.0', gags: [] }, 
+			{ lvl: 1, ver: '1.0', gags: [] }, 
+			{ lvl: 1, ver: '1.0', gags: [] } 
+		];
+
+		// change generator settings
+		var genSettings = function(call) {
+			switch (call) {
+				case 0: {
+					toonCount++;
+					if (toonCount > 4) {
+						toonCount = 4;
+					};
+					document.getElementById('gen-toon-count').innerHTML = toonCount;
+				}; break;
+				case 1: {
+					toonCount--;
+					if (toonCount < 1) {
+						toonCount = 1;
+					};
+					document.getElementById('gen-toon-count').innerHTML = toonCount;
+				}; break;
+				case 2: {
+					minGagLVL++;
+					if (minGagLVL > 6) {
+						minGagLVL = 6;
+					};
+					document.getElementById('gen-min-lvl').innerHTML = minGagLVL;
+				}; break;
+				case 3: {
+					minGagLVL--;
+					if (minGagLVL < 1) {
+						minGagLVL = 1;
+					};
+					document.getElementById('gen-min-lvl').innerHTML = minGagLVL;
+				}; break;
+			};
+		};
+
+		// generate track gags
+		var generateGags = function(track, start, count) {
+			var begin = new Cog(tracks[selected].lvl, tracks[selected].ver == '2.0');
+			for (var i = 0; i < tracks[selected].gags.length; i++) {
+				begin.hit(tracks[selected].gags[i]);
+			};
+			var cog = begin.copy();
+			cog.bonus();
+			if (cog.hp <= 0) { return; };
+			var gags = [];
+			for (var i = 0; i < count; i++) {
+				gags.push(new Gag(track, start, organicFlag));
+			};
+			while (true) {
+				var cog = begin.copy();
+				for (var i = 0; i < gags.length; i++) {
+					cog.hit(gags[i]);
+				};
+				cog.bonus();
+				if (begin.v2) {
+					if (cog.hp <= cogHP(cog.lvl)) { break; };
+				} else {
+					if (cog.hp <= 0) { break; };
+				};
+				var minID = 0;
+				var minVal = 255;
+				for (var i = 0; i < gags.length; i++) {
+					if (gags[i].i < minVal) {
+						minVal = gags[i].i;
+						minID = i;
+					};
+				};
+				if (gags[minID].i >= 6) {
+					for (var i = 0; i < gags.length; i++) {
+						gagSelect(gags[i]);
+					};
+					return;
+				};
+				gags[minID].i++;
+			};
+			while (gags.length) {
+				var minID = gags.length - 1;
+				var minVal = 255;
+				for (var i = 0; i < gags.length; i++) {
+					if (gags[i].i <= minVal) {
+						minVal = gags[i].i;
+						minID = i;
+					};
+				};
+				var copy = [];
+				for (var i = 0; i < gags.length; i++) {
+					copy.push(new Gag(gags[i].t, gags[i].i, gags[i].o));
+				};
+				if (gags[minID].i <= 0) {
+					gags.splice(minID, 1);
+				} else {
+					gags[minID].i--;
+				};
+				var cog = begin.copy();
+				for (var i = 0; i < gags.length; i++) {
+					cog.hit(gags[i]);
+				};
+				cog.bonus();
+				if (begin.v2) {
+					if (cog.hp > cogHP(cog.lvl)) {
+						gags = copy;
+						break;
+					};
+				} else {
+					if (cog.hp > 0) {
+						gags = copy;
+						break;
+					};
+				};
+			};
+			for (var i = 0; i < gags.length; i++) {
+				gagSelect(gags[i]);
+			};
+		};
+
+		// clear everything
+		var totalClean = function() {
+			for (var i = 0; i < 4; i++) {
+				tracks[i].gags = [];
+				document.getElementById(`equ-${i + 1}`).replaceChildren();
+			};
+			evalEqu();
+		};
+
+		// toggle organic flag
+		var toggleOrg = function() {
+			organicFlag = !organicFlag;
+			displayLeaf(organicFlag);
+		};
+
+		// toggle cog version
+		var toggleCog = function(ID) {
+			tracks[ID - 1].ver = (tracks[ID - 1].ver == '2.0') ? '1.0' : '2.0';
+			evalEqu();
+		};
+
+		// change cog level
+		var cogLVL = function(ID, evt) {
+			evt.preventDefault();
+			delta = -Math.floor(evt.deltaY / 100);
+			tracks[ID - 1].lvl += delta;
+			if (tracks[ID - 1].lvl < 1) {
+				tracks[ID - 1].lvl = 1;
+			};
+			if (tracks[ID - 1].lvl > 20) {
+				tracks[ID - 1].lvl = 20;
+			};
+			evalEqu();
+		};
+
+		// select equation
+		var selectTrack = function(ID) {
+			for (var i = 0; i < 4; i++) {
+				document.getElementById(`sel-${i + 1}`).src = 'battle/passive.png';
+			};
+			document.getElementById(`sel-${ID}`).src = 'battle/active.png';
+			selected = ID - 1;
+		};
+
+		// evaluate equation
+		var evalEqu = function() {
+			for (var i = 0; i < 4; i++) {
+				document.getElementById(`cog-${i + 1}-ver`).innerHTML = tracks[i].ver; 
+				document.getElementById(`cog-${i + 1}-lvl`).innerHTML = `LVL ${tracks[i].lvl}`;
+				var track = tracks[i];
+				var cog = new Cog(track.lvl, track.ver == '2.0');
+				for (var j = 0; j < track.gags.length; j++) {
+					cog.hit(track.gags[j]);
+				};
+				cog.bonus();
+				document.getElementById(`cog-${i + 1}-ver-res`).innerHTML = cog.version();
+				if (cog.hp <= 0) {
+					document.getElementById(`cog-${i + 1}-lvl-res`).innerHTML = `<span class="acc-low">${cog.hp} HP</span>`;
+				} else {
+					if (cog.version() == '2.0') {
+						document.getElementById(`cog-${i + 1}-lvl-res`).innerHTML = `${cog.hp - cogHP(cog.lvl)} (${cog.hp}) HP`;
+					} else {
+						document.getElementById(`cog-${i + 1}-lvl-res`).innerHTML = `${cog.hp} HP`;
+					};
+				};
+				document.getElementById(`gbonus-${i + 1}`).innerHTML = `${cog.comboBonus} HP`;
+				document.getElementById(`mbonus-${i + 1}`).innerHTML = `${cog.lureBonus} HP`;
+				document.getElementById(`pbonus-${i + 1}`).innerHTML = `${cog.plating} HP`;
+				document.getElementById(`dbonus-${i + 1}`).innerHTML = `${cog.dropMissed} HP`;
+				document.getElementById(`gbonus-div-${i + 1}`).style.display = cog.comboBonus > 0 ? 'block' : 'none';
+				document.getElementById(`mbonus-div-${i + 1}`).style.display = cog.lureBonus > 0 ? 'block' : 'none';
+				document.getElementById(`pbonus-div-${i + 1}`).style.display = cog.plating > 0 ? 'block' : 'none';
+				document.getElementById(`dbonus-div-${i + 1}`).style.display = cog.dropMissed > 0 ? 'block' : 'none';
+			};
+		};
+
+		// display organic gags
+		var displayLeaf = function(org) {
+			var els = document.getElementsByClassName('leaftable');
+			if (org) {
+				for (var i = 0; i < els.length; i++) {
+					els[i].style.display = "block";
+				};
+				for (var t = 0; t < gags.tracks.length; t++) {
+					for (var i = 0; i < gags.tracks[t].count; i++) {
+						var el = document.getElementById(`gag-${t}${i}`);
+						el.style.backgroundColor = gags.tracks[t].light;
+					};
+				};
+			} else {
+				for (var i = 0; i < els.length; i++) {
+					els[i].style.display = "none";
+				};
+				for (var t = 0; t < gags.tracks.length; t++) {
+					for (var i = 0; i < gags.tracks[t].count; i++) {
+						var el = document.getElementById(`gag-${t}${i}`);
+						el.style.backgroundColor = gags.tracks[t].color;
+					};
+				};
+			};
+		};
+
+		// create gag element
+		Gag.prototype.create = function(ID, table = false) {
+			var el = document.createElement('div');
+			img = document.createElement('img');
+			img.className = table ? 'leaftable' : 'leaf';
+			img.src = 'battle/leaf.png';
+			el.appendChild(img);
+			el.gdata = { track: this.t, ID: this.i };
+			this.style(el, table, ID);
+			return el;
+		};
+
+		// style gag element
+		Gag.prototype.style = function(el, table = false, ID = null) {
+			if (ID !== null) { el.id = ID; };
+			var tile = this.i == 7 ? gags.gen.tile : gags.items[this.t * 7 + this.i].tile;
+			var name = this.i == 7 ? gags.gen.name : gags.items[this.t * 7 + this.i].name;
+			if (typeof(tile) == 'object') { tile = tile[winter]; };
+			if (typeof(name) == 'object') { name = name[winter]; };
+			el.className = 'gag';
+			el.style.border = `${gags.tracks[this.t].border} solid 5px`;
+			el.style.borderRadius = '10px 5px';
+			el.style.background = `url(gags.png) ${tile % 7 * -48}px ${Math.floor(tile / 7) * -48}px`;
+			el.style.backgroundColor = (table ? organicFlag : this.o) ? gags.tracks[this.t].light : gags.tracks[this.t].color;
+			if (table) {
+				el.onclick = evt => gagSelect(new Gag(evt.target.gdata.track, evt.target.gdata.ID, organicFlag));
+			} else {
+				el.onclick = evt => gagSelect(new Gag(evt.target.gdata.track, evt.target.gdata.ID, this.o));
+			};
+			if (table) {
+				el.onpointerenter = evt => new Gag(evt.target.gdata.track, evt.target.gdata.ID, organicFlag).preview();
+			} else {
+				el.onpointerenter = evt => new Gag(evt.target.gdata.track, evt.target.gdata.ID, this.o).preview();
+			};
+			el.firstChild.style.display = (table ? organicFlag : this.o) ? 'block' : 'none';
+		};
+
+		// preview gag
+		Gag.prototype.preview = function() {
+			var gl = document.getElementById('gag-info');
+			var img = document.getElementById('gag-preview');
+			var name = document.getElementById('gag-info-name');
+			var target = document.getElementById('gag-info-target');
+			var acc = document.getElementById('gag-info-acc');
+			var desc = document.getElementById('gag-info-acc-text');
+			var unit = document.getElementById('gag-info-unit');
+			var dmg = document.getElementById('gag-info-dmg');
+			var info = this.info();
+
+			gl.style.backgroundColor = gags.tracks[this.t].color;
+			this.style(img);
+			name.innerHTML = (this.o ? 'Organic ' : '') + info.name;
+			name.style.color = gags.tracks[this.t].text;
+			target.innerHTML = (this.i == 7 ? this.t == 3 : info.all) ? 'All Cogs' : 'One Cog';
+			acc.innerHTML = `${info.acc}%`;
+			if (info.acc <= 50) {
+				desc.className = 'acc-low';
+				desc.innerHTML = 'Low';
+			} else if (info.acc <= 75) {
+				desc.className = 'acc-med';
+				desc.innerHTML = 'Medium';
+			} else if (info.acc < 100) {
+				desc.className = 'acc-high';
+				desc.innerHTML = 'High';
+			} else {
+				desc.className = 'acc-perf';
+				desc.innerHTML = 'Perfect';
+			};
+			unit.innerHTML = gags.tracks[this.t].unit;
+			dmg.innerHTML = this.i == 7 ? '?' : info.arg;
+		};
+
+		// gag select
+		var gagSelect = function(gag) {
+			if (gag.i == 7) {
+				generateGags(gag.t, minGagLVL - 1, toonCount);
+			} else if (gag.info().all) {
+				for (var i = 0; i < 4; i++) {
+					var el = gag.create(null);
+					el.style.marginLeft = '5px';
+					document.getElementById(`equ-${i + 1}`).appendChild(el);
+					tracks[i].gags.push(gag);
+				};
+			} else {
+				var el = gag.create(null);
+				el.style.marginLeft = '5px';
+				document.getElementById(`equ-${selected + 1}`).appendChild(el);
+				tracks[selected].gags.push(gag);
+			};
+			evalEqu();
+		};
+
+		// remove gag
+		var gagRemove = function(ID) {
+			if (tracks[ID - 1].gags.length) {
+				if (tracks[ID - 1].gags[tracks[ID - 1].gags.length - 1].info().all) {
+					for (var i = 0; i < 4; i++) {
+						if (tracks[i].gags.length) {
+							tracks[i].gags.pop();
+							var equ = document.getElementById(`equ-${i + 1}`);
+							equ.removeChild(equ.lastChild);
+						};
+					};
+				} else {
+					tracks[ID - 1].gags.pop();
+					var equ = document.getElementById(`equ-${ID}`);
+					equ.removeChild(equ.lastChild);
+				};
+			};
+			evalEqu();
+		};
+
+		// create gag selector
+		var table = document.getElementById('gag-table');
+		for (var t = 0; t < gags.tracks.length; t++) {
+			var tr = document.createElement('tr');
+			var ct = document.createElement('center');
+			var lb = document.createElement('b');
+			tr.id = `track-${t}`;
+			lb.id = `track-${t}-name`;
+			tr.style.backgroundColor = gags.tracks[t].color;
+			lb.style.color = gags.tracks[t].text;
+			lb.innerHTML = gags.tracks[t].name;
+			lb.style.fontSize = '24px';
+			ct.appendChild(lb);
+			tr.appendChild(ct);
+			for (var i = 0; i < 7 + (this.t >= 3 ? 1 : 0); i++) {
+				var td = document.createElement('td');
+				td.appendChild(new Gag(t, i, organicFlag).create(`gag-${t}${i}`, true));
+				tr.appendChild(td);
+			};
+			table.appendChild(tr);
+		};
+		var el = document.createElement('td');
+		el.id = 'org-display';
+		el.onclick = toggleOrg;
+		document.getElementById('track-0').appendChild(el);
+
+		// organic gags trigger
+		window.onkeydown = evt => {
+			if (evt.key == 'o' || evt.key == 'O') {
+				toggleOrg();
+			};
+		};
+
+	</script>
+</body></html>

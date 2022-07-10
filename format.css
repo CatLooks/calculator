@@ -1,0 +1,114 @@
+@font-face {
+	font-family: 'Font';
+	src: url(font.ttf);
+}
+
+a {
+	all: unset;
+	cursor: pointer;
+	color: #5470EF;
+}
+
+body {
+	background-color: #FFF;
+	color: #000;
+	font-family: 'Font';
+	font-weight: 100;
+	font-size: 16px;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+footer {
+	background-color: #E8E65A;
+	color: #A2A02A;
+	margin-top: auto;
+}
+
+.equ {
+	width: 100%;
+	border: #000 solid 5px;
+	border-radius: 10px 5px;
+	display: flex;
+	background: linear-gradient(to right, #888, #777);
+	align-items: center;
+	padding-left: 5px;
+}
+
+.res {
+	width: 512px;
+	border: #000 solid 5px;
+	border-radius: 10px 5px;
+	display: flex;
+	background: linear-gradient(to right, #AAA, #999);
+	align-items: center;
+	padding-left: 5px;
+	margin-left: auto;
+}
+
+.gag {
+	width: 48px;
+	height: 48px;
+}
+
+.leaf, .leaftable {
+	position: relative;
+	left: 36px;
+	top: -6px;
+	width: 20px;
+	height: 17px;
+}
+#org-toggle {
+	display: block;
+	position: relative;
+	width: 40px;
+	height: 34px;
+	left: -50px;
+	top: 11px;
+}
+
+#gag-info {
+	width: 320px;
+	margin-left: 20px;
+	font-size: 24px;
+	background-color: #808080;
+	color: #101114;
+	border: #000 solid 5px;
+	border-radius: 10px 5px;
+	text-align: center;
+}
+#gen-form {
+	width: 320px;
+	margin-left: 20px;
+	font-size: 24px;
+	background: #808080;
+	color: #101114;
+	border: #000 solid 5px;
+	border-radius: 10px 5px;
+	text-align: center;
+}
+
+.acc-low {
+	color: #E3053C;
+}
+.acc-med {
+	color: #F3BD72;
+}
+.acc-high {
+	color: #6DF207;
+}
+.acc-perf {
+	color: #D1B52A;
+}
+
+.not-selectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
